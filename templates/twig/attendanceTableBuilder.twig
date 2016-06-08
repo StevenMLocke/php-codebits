@@ -1,0 +1,36 @@
+<script>
+    $(document).ready(function(){
+        $("#attendance").dataTable({
+            "aaSorting" : [[3, "desc"]]
+        });
+    });
+</script>
+<h3>Attendance for {{date}}</h3>
+<br/>
+<table id="attendance" class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>ID</th>
+            <th>Login ID</th>
+            <th>Attendance</th>
+        </tr>
+    </thead>
+    <tfoot>
+        <tr>
+            <th>Name</th>
+            <th>ID</th>
+            <th>Login ID</th>
+            <th>Attendance</th>
+        </tr>
+    </tfoot>
+    <tbody>
+    {%for stu in attendArr%}
+        <tr>
+            {%for key, value in stu%}
+                <td>{{value}}</td>
+            {%endfor%}
+        </tr>
+    {%endfor%}
+    </tbody>
+</table>

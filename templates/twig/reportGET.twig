@@ -1,0 +1,27 @@
+<script src="http://registrar6.go2boss.com/pages/includes/scripts/reports.js" ></script>
+<div class='box box-primary'>
+    <div class='box-header with-border'>
+        <h3 class='box-title'>{{myTitle|title}}</h3>
+        <span class='label label-primary pull-right'>
+            <i class='fa fa-html5'></i>
+        </span>
+    </div><!-- /.box-header -->
+    <div class='box-body'>
+        <div class='row'>
+            <div class='col-sm-2'></div>
+            <div class='col-sm-8'>
+                <form class='form' method='post'>
+                    {{formGroups | raw}}
+                    <div class='form-group'>
+                        <button type='submit' class='btn btn-primary ladda-button' data-style='zoom-in'>
+                            <span class='ladda-label'>
+                                <i class='fa fa-download'></i> Run Report
+                            </span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+            <div class='col-sm-2'></div>
+        </div>
+    </div>
+</div>

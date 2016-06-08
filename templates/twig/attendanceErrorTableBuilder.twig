@@ -1,0 +1,61 @@
+<!--count, errArr, token, date, module-->
+
+<div class="row">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-8">
+        <h4>The following {{count}} returned errors:</h4>
+        <h4>Rerun report or check individually.</h4>
+        <table class="table table-condensed table-bordered table-striped data-table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>ID</th>
+                    <th>Login ID</th>
+                    <th>Check Again</th>
+                </tr>
+            </thead>
+            <tfoot>
+                <tr>
+                    <th>#</th>
+                    <td>Name</td>
+                    <td>ID</td>
+                    <td>Login ID</td>
+                    <th>Check Again</th>
+                </tr>
+            </tfoot>
+            <tbody>
+                {%set i = 1 %}
+                {% for stu in errArr %}
+                    {% set stuLoginId = stu['Login ID'] %}
+                    {% set stuId = stu['Canvas ID'] %}
+                    <tr>
+                        <td>{{i}}</td>
+                        {%for key , val in stu%}
+                            <td>{{val}}</td>
+                        {%endfor%}
+                        <td>
+                            <!--<form class='form' target='_blank' method='post' name="{{stuLoginId}}" action='http://some.domain.com/pages/admin/canvasReporter.php'>-->
+                            <form class='form' target='_blank' method='get' name="{{stuLoginId}}" action='http://some.domain.com/pages/admin/cAuth.php'>
+                                <div class='form-group'>
+                                    <input type='text' name='module' style='display:none;' value='{{module}}' />
+                                    <input type='text' name='date' style='display:none;' value='{{date}}'/>
+                                    <input type='text' name='id' style='display:none;' value="{{stuId}}" />
+                                </div>
+                                <div class='form-group'>
+                                    <button type="submit" class="btn btn-primary ladda-button retry" data-style="zoom-in">
+                                        <span class="ladda-label">
+                                            <i class="fa fa-download"></i> Run Report
+                                        </span>
+                                    </button>
+                                </div>
+                            </form>
+                        </td>
+                    </tr>
+                    {%set i = i + 1 %}
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div class="col-sm-2"></div>
+</div>';
